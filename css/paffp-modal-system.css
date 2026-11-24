@@ -1,0 +1,345 @@
+/*
+ * PAFFP Unified Modal & Popup System
+ * ----------------------------------
+ * Shared visual language for Admin and Verify.
+ */
+
+:root {
+    --paffp-modal-radius: 20px;
+    --paffp-modal-accent: #198754;
+    --paffp-modal-accent-rgb: 25, 135, 84;
+    --paffp-modal-surface: var(--surface, #ffffff);
+    --paffp-modal-muted: var(--surface-muted, #f6f8f7);
+    --paffp-modal-border: var(--border, rgba(33, 37, 41, .12));
+    --paffp-modal-text: var(--text-main, #212529);
+    --paffp-modal-soft: var(--text-soft, #6c757d);
+}
+
+/* Backdrop */
+.modal-backdrop.show {
+    background: #08110c;
+    opacity: .50;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Core modal shell */
+.paffp-modal {
+    --paffp-modal-accent: #198754;
+    --paffp-modal-accent-rgb: 25, 135, 84;
+
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--paffp-modal-border) !important;
+    border-radius: var(--paffp-modal-radius) !important;
+    background: var(--paffp-modal-surface) !important;
+    color: var(--paffp-modal-text) !important;
+    box-shadow:
+        0 26px 70px rgba(16, 24, 20, .22),
+        0 6px 20px rgba(16, 24, 20, .10) !important;
+}
+
+.paffp-modal::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 4px;
+    background: var(--paffp-modal-accent);
+}
+
+.paffp-modal.paffp-tone-info {
+    --paffp-modal-accent: #0d6efd;
+    --paffp-modal-accent-rgb: 13, 110, 253;
+}
+
+.paffp-modal.paffp-tone-success {
+    --paffp-modal-accent: #198754;
+    --paffp-modal-accent-rgb: 25, 135, 84;
+}
+
+.paffp-modal.paffp-tone-warning {
+    --paffp-modal-accent: #b58100;
+    --paffp-modal-accent-rgb: 181, 129, 0;
+}
+
+.paffp-modal.paffp-tone-danger {
+    --paffp-modal-accent: #dc3545;
+    --paffp-modal-accent-rgb: 220, 53, 69;
+}
+
+/* Header */
+.paffp-modal .modal-header {
+    min-height: 72px;
+    padding: 1rem 1.15rem .9rem !important;
+    border-bottom: 1px solid var(--paffp-modal-border) !important;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(var(--paffp-modal-accent-rgb), .105),
+            rgba(var(--paffp-modal-accent-rgb), .025) 58%,
+            transparent
+        ) !important;
+    color: var(--paffp-modal-text) !important;
+}
+
+.paffp-modal .modal-title {
+    margin: 0;
+    color: var(--paffp-modal-text) !important;
+    font-size: .96rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25;
+}
+
+.paffp-modal .modal-header .small,
+.paffp-modal .modal-header .text-secondary,
+.paffp-modal-subtitle {
+    color: var(--paffp-modal-soft) !important;
+    font-size: .76rem !important;
+    line-height: 1.4;
+}
+
+.paffp-modal .btn-close,
+.paffp-modal .camera-modal-close {
+    display: inline-grid !important;
+    place-items: center;
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid var(--paffp-modal-border) !important;
+    border-radius: 10px !important;
+    background-color: var(--paffp-modal-muted) !important;
+    color: var(--paffp-modal-soft) !important;
+    opacity: 1 !important;
+}
+
+.paffp-modal .btn-close:hover,
+.paffp-modal .camera-modal-close:hover {
+    border-color: rgba(var(--paffp-modal-accent-rgb), .32) !important;
+    background-color: rgba(var(--paffp-modal-accent-rgb), .10) !important;
+    color: var(--paffp-modal-accent) !important;
+}
+
+/* Shared icon tile */
+.paffp-modal-icon,
+.paffp-modal .admin-action-icon,
+.paffp-modal .camera-header-icon,
+#paffpNoticeIconWrap {
+    display: grid !important;
+    place-items: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    flex: 0 0 42px !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: rgba(var(--paffp-modal-accent-rgb), .12) !important;
+    color: var(--paffp-modal-accent) !important;
+    font-size: 1rem !important;
+}
+
+/* Body */
+.paffp-modal .modal-body {
+    padding: 1.1rem 1.15rem !important;
+    background: var(--paffp-modal-surface) !important;
+    color: var(--paffp-modal-text) !important;
+}
+
+.paffp-modal .modal-body .text-muted,
+.paffp-modal .modal-body .text-secondary {
+    color: var(--paffp-modal-soft) !important;
+}
+
+/* Footer */
+.paffp-modal .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    padding: .8rem 1.15rem !important;
+    border-top: 1px solid var(--paffp-modal-border) !important;
+    background: var(--paffp-modal-muted) !important;
+}
+
+.paffp-modal .modal-footer > * {
+    margin: 0 !important;
+}
+
+.paffp-modal .modal-footer .btn {
+    min-height: 40px;
+    padding: .48rem .9rem;
+    border-radius: 10px;
+    font-size: .78rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Form controls inside modals */
+.paffp-modal .form-control,
+.paffp-modal .form-select {
+    min-height: 40px;
+    border-color: var(--paffp-modal-border);
+    border-radius: 10px;
+    background-color: var(--paffp-modal-surface);
+    color: var(--paffp-modal-text);
+    font-size: .82rem;
+}
+
+.paffp-modal .form-control:focus,
+.paffp-modal .form-select:focus {
+    border-color: rgba(var(--paffp-modal-accent-rgb), .58);
+    box-shadow: 0 0 0 .2rem rgba(var(--paffp-modal-accent-rgb), .10);
+}
+
+/* Camera keeps its larger working area, but uses the same shell. */
+#cameraModal .paffp-modal {
+    border-radius: var(--paffp-modal-radius) !important;
+}
+
+#cameraModal .paffp-modal .modal-header {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25, 135, 84, .12),
+            rgba(25, 135, 84, .025) 58%,
+            transparent
+        ) !important;
+}
+
+#cameraModal .camera-header-kicker {
+    color: var(--paffp-modal-accent) !important;
+    font-size: .64rem !important;
+    font-weight: 800 !important;
+    letter-spacing: .085em !important;
+    text-transform: uppercase;
+}
+
+/* Success result modal */
+#uploadSuccessModal .modal-body > .fa-cloud-upload-alt {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 18px;
+    background: rgba(25, 135, 84, .12);
+    color: #198754 !important;
+    font-size: 1.65rem !important;
+}
+
+#uploadSuccessModal .modal-body h5 {
+    color: var(--paffp-modal-text);
+    font-size: .98rem;
+    font-weight: 800;
+}
+
+#uploadSuccessModal .modal-footer {
+    justify-content: center;
+}
+
+/* Admin dynamic action modal */
+.admin-action-modal.paffp-modal .admin-action-icon.is-danger,
+.admin-action-modal.paffp-modal .admin-action-icon.is-warning,
+.admin-action-modal.paffp-modal .admin-action-icon.is-success,
+.admin-action-modal.paffp-modal .admin-action-icon.is-info {
+    background: rgba(var(--paffp-modal-accent-rgb), .12) !important;
+    color: var(--paffp-modal-accent) !important;
+}
+
+/* Standardized centered caution popup */
+.caution-warning-popup {
+    width: min(92vw, 500px) !important;
+    padding: 1.2rem 1.15rem !important;
+    border: 1px solid var(--paffp-modal-border) !important;
+    border-top: 4px solid #dc3545 !important;
+    border-radius: var(--paffp-modal-radius) !important;
+    background: var(--paffp-modal-surface) !important;
+    color: var(--paffp-modal-text) !important;
+    box-shadow:
+        0 26px 70px rgba(16, 24, 20, .22),
+        0 6px 20px rgba(16, 24, 20, .10) !important;
+}
+
+.caution-warning-icon {
+    width: 56px !important;
+    height: 56px !important;
+    flex: 0 0 56px !important;
+    border-radius: 16px !important;
+    background: rgba(220, 53, 69, .12) !important;
+    color: #dc3545 !important;
+    font-size: 1.35rem !important;
+    animation: none !important;
+}
+
+.caution-warning-title {
+    color: #dc3545 !important;
+    font-size: .9rem !important;
+    font-weight: 800 !important;
+    letter-spacing: .055em !important;
+}
+
+.caution-warning-message {
+    color: var(--paffp-modal-soft) !important;
+    font-size: .78rem !important;
+}
+
+/* Announcements intentionally retain the original Verify design. */
+
+/* Mobile */
+@media (max-width: 575.98px) {
+    :root {
+        --paffp-modal-radius: 17px;
+    }
+
+    .modal-dialog {
+        margin: .75rem;
+    }
+
+    .paffp-modal .modal-header {
+        min-height: 66px;
+        padding: .85rem .9rem .8rem !important;
+    }
+
+    .paffp-modal .modal-body {
+        padding: .95rem !important;
+    }
+
+    .paffp-modal .modal-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: .75rem .9rem !important;
+    }
+
+    .paffp-modal .modal-footer .btn {
+        width: 100%;
+    }
+
+    .paffp-modal .modal-footer > :only-child {
+        grid-column: 1 / -1;
+    }
+
+    .paffp-modal .modal-footer:has(> .btn:nth-child(3)) {
+        grid-template-columns: 1fr;
+    }
+
+    #uploadSuccessModal .modal-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .caution-warning-popup {
+        width: calc(100vw - 24px) !important;
+        padding: 1.05rem .9rem !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .paffp-modal,
+    .caution-warning-popup {
+        transition: none !important;
+        animation: none !important;
+    }
+}
